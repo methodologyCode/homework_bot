@@ -39,9 +39,8 @@ HOMEWORK_VERDICTS = {
 
 def check_tokens():
     """Проверяем переменные окружения."""
-    if (TELEGRAM_TOKEN is None
-            or PRACTICUM_TOKEN is None or
-            TELEGRAM_CHAT_ID is None):
+    if (TELEGRAM_TOKEN is None or PRACTICUM_TOKEN is None
+            or TELEGRAM_CHAT_ID is None):
         logger.critical('Отсутствуют переменные окружения!')
         raise EnvironMissing('Задайте переменные окружения!')
 
@@ -79,7 +78,6 @@ def get_api_answer(timestamp):
 
 def check_response(response):
     """Проверяем ответ от API."""
-
     if not isinstance(response, dict):
         raise TypeError(
             'Тип данных ответа API не является словарём'
@@ -122,12 +120,12 @@ def parse_status(homework):
     homework_status = homework.get('status')
 
     if not homework_name:
-        logging.error(f'Нет нужного ключа')
-        send_message(f'Нет нужного ключа - {homework_name}')
-        raise KeyError('Нет нужного ключа')
+        logging.error('Нет нужного ключа {homework_name}')
+        send_message('Нет нужного ключа - {homework_name}')
+        raise KeyError('Нет нужного ключа {homework_name}')
 
     if homework_status not in HOMEWORK_VERDICTS:
-        logging.error(f'Неожиданный статус')
+        logging.error(f'Неожиданный статус {homework_status}')
         send_message(f'Неожиданный статус {homework_status}')
         raise KeyError(f'Неверный статус работы: {homework_status}')
 
