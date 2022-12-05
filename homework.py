@@ -147,7 +147,7 @@ def main():
             homework = check_response(response)
             if homework:
                 hw_status = parse_status(homework)
-                if hw_status in homework_status:
+                if hw_status == homework_status:
                     send_message(f'Без обновлений: {hw_status}')
                     logger.debug(f'Статус не обновлён: {hw_status}')
                 else:
