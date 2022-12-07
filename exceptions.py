@@ -1,5 +1,5 @@
 class EnvironMissing(Exception):
-    """Исключения для переменных окружения."""
+    """Исключение для переменных окружения."""
     pass
 
 
@@ -9,7 +9,7 @@ class FailedRequestApi(Exception):
 
 
 class MissingKeyException(Exception):
-    """Отсутствие нужный ключей."""
+    """Отсутствие нужного ключа."""
     pass
 
 
@@ -20,4 +20,9 @@ class EmptyList(Exception):
 
 class SendMessageError(Exception):
     """Ошибка при отправке сообщения."""
+    pass
+
+
+class JsonError(Exception):
+    """Ошибка при работе с методом json()."""
     pass
